@@ -6,7 +6,7 @@ use Illuminate\Contracts\View\Engine;
 
 class TwigEngine implements Engine
 {
-    /*** @var \DinhQuocHan\Twig\TwigEnvironment */
+    /*** @var \DinhQuocHan\Twig\ */
     protected $environment;
 
     public function __construct(TwigEnvironment $environment)

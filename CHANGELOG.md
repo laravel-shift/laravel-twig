@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-twig` will be documented in this file
 
+## 2.0.0 - 2022-01-18
+
+- Support Laravel 9.x
+- Remove Support Laravel 6.x, 7.x
+
 ## 1.4.0 - 2021-02-18
 
 - Add PHP 8.0 support
