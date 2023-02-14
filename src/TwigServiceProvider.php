@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 class TwigServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/twig.php', 'twig');
 
@@ -18,9 +18,9 @@ class TwigServiceProvider extends ServiceProvider
         $this->registerCommands();
     }
 
-    public function boot()
+    public function boot(): void
     {
-        if (! $this->app->runningInConsole() || $this->app instanceof \Laravel\Lumen\Application) {
+        if (! $this->app->runningInConsole()) {
             return;
         }
 
@@ -29,7 +29,7 @@ class TwigServiceProvider extends ServiceProvider
         ]);
     }
 
-    public function provides()
+    public function provides(): array
     {
         return [
             'twig.loader',
@@ -37,14 +37,14 @@ class TwigServiceProvider extends ServiceProvider
         ];
     }
 
-    protected function registerTwigLoader()
+    protected function registerTwigLoader(): void
     {
         $this->app->bind('twig.loader', function ($app) {
             return new TwigLoader($app['view']);
         });
     }
 
-    protected function registerTwigEnvironment()
+    protected function registerTwigEnvironment(): void
     {
         $this->app->singleton('twig.environment', function ($app) {
             return tap(new TwigEnvironment($app['twig.loader'], [

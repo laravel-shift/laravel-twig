@@ -3,19 +3,13 @@
 namespace DinhQuocHan\Twig\Extensions;
 
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use Illuminate\Support\Str as IlluminateStr;
 
-class Str extends AbstractExtension implements ExtensionInterface
+class Str extends AbstractExtension
 {
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFilter[]
-     */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('__', '__'),
@@ -31,12 +25,7 @@ class Str extends AbstractExtension implements ExtensionInterface
         ];
     }
 
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('__', '__'),

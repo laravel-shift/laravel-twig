@@ -9,12 +9,8 @@ use Twig\Source;
 
 class TwigLoader implements LoaderInterface
 {
-    /** @var \Illuminate\View\Factory */
-    protected $view;
-
-    public function __construct(Factory $view)
+    public function __construct(protected Factory $view)
     {
-        $this->view = $view;
     }
 
     public function getViewFinder(): ViewFinderInterface

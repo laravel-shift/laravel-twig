@@ -7,6 +7,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Add supported view file extensions. E.g: *.twig, *.html.twig, *.css.twig...
+    |
     */
 
    'file_extensions' => [
@@ -19,6 +20,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Enabled twig extensions.
+    |
     */
 
    'extensions' => [

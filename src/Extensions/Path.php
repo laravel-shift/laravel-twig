@@ -3,17 +3,11 @@
 namespace DinhQuocHan\Twig\Extensions;
 
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class Path extends AbstractExtension implements ExtensionInterface
+class Path extends AbstractExtension
 {
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFilter[]
-     */
     public function getFilters()
     {
         return [

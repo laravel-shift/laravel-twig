@@ -4,32 +4,15 @@ namespace DinhQuocHan\Twig\Extensions;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFunction;
 
-class Gate extends AbstractExtension implements ExtensionInterface
+class Gate extends AbstractExtension
 {
-    /**
-     * @var \Illuminate\Contracts\Auth\Access\Gate
-     */
-    protected $gate;
-
-    /**
-     * Create a new gate extension.
-     *
-     * @param \Illuminate\Contracts\Auth\Access\Gate
-     */
-    public function __construct(GateContract $gate)
+    public function __construct(protected GateContract $gate)
     {
-        $this->gate = $gate;
     }
 
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('can', [$this->gate, 'check']),

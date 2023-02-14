@@ -3,18 +3,12 @@
 namespace DinhQuocHan\Twig\Extensions;
 
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class Translator extends AbstractExtension implements ExtensionInterface
+class Translator extends AbstractExtension
 {
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFilter[]
-     */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('__', '__', ['pre_escape' => 'html', 'is_safe' => ['html']]),
@@ -23,12 +17,7 @@ class Translator extends AbstractExtension implements ExtensionInterface
         ];
     }
 
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('__', '__', ['pre_escape' => 'html', 'is_safe' => ['html']]),

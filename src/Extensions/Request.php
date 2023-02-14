@@ -4,32 +4,15 @@ namespace DinhQuocHan\Twig\Extensions;
 
 use Illuminate\Http\Request as BaseRequest;
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFunction;
 
-class Request extends AbstractExtension implements ExtensionInterface
+class Request extends AbstractExtension
 {
-    /**
-     * @var \Illuminate\Http\Request
-     */
-    protected $request;
-
-    /**
-     * Create a new request extension.
-     *
-     * @param \Illuminate\Http\Request
-     */
-    public function __construct(BaseRequest $request)
+    public function __construct(protected BaseRequest $request)
     {
-        $this->request = $request;
     }
 
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('request', [$this->request, 'input']),

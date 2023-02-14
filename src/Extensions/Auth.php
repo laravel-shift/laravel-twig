@@ -4,32 +4,15 @@ namespace DinhQuocHan\Twig\Extensions;
 
 use Illuminate\Contracts\Auth\Factory;
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFunction;
 
-class Auth extends AbstractExtension implements ExtensionInterface
+class Auth extends AbstractExtension
 {
-    /**
-     * @var \Illuminate\Contracts\Auth\Factory
-     */
-    protected $auth;
-
-    /**
-     * Create a new auth extension.
-     *
-     * @param \Illuminate\Contracts\Auth\Factory
-     */
-    public function __construct(Factory $auth)
+    public function __construct(protected Factory $auth)
     {
-        $this->auth = $auth;
     }
 
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('auth', [$this->auth, 'guard']),

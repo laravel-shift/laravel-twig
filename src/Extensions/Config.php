@@ -4,31 +4,14 @@ namespace DinhQuocHan\Twig\Extensions;
 
 use Illuminate\Contracts\Config\Repository;
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFunction;
 
-class Config extends AbstractExtension implements ExtensionInterface
+class Config extends AbstractExtension
 {
-    /**
-     * @var \Illuminate\Contracts\Config\Repository
-     */
-    protected $config;
-
-    /**
-     * Create a new config extension.
-     *
-     * @param \Illuminate\Contracts\Config\Repository
-     */
-    public function __construct(Repository $config)
+    public function __construct(protected Repository $config)
     {
-        $this->config = $config;
     }
 
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
     public function getFunctions()
     {
         return [

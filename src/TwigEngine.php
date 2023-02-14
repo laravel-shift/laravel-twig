@@ -6,22 +6,14 @@ use Illuminate\Contracts\View\Engine;
 
 class TwigEngine implements Engine
 {
-    /*** @var \DinhQuocHan\Twig\ */
-    protected $environment;
-
-    public function __construct(TwigEnvironment $environment)
+    public function __construct(protected TwigEnvironment $environment)
     {
-        $this->environment = $environment;
     }
 
     /**
-     * Get the evaluated contents of the view.
-     *
-     * @param  string  $path
-     * @param  array   $data
-     * @return string
+     * {@inheritDoc}
      */
-    public function get($path, array $data = [])
+    public function get($path, array $data = []): string
     {
         return $this->environment->render($path, $data);
     }

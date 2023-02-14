@@ -4,16 +4,10 @@ namespace DinhQuocHan\Twig\Extensions;
 
 use Illuminate\Support\Str;
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFunction;
 
-class Arr extends AbstractExtension implements ExtensionInterface
+class Arr extends AbstractExtension
 {
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
     public function getFunctions()
     {
         return [

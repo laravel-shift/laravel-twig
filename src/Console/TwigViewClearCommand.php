@@ -3,45 +3,33 @@
 namespace DinhQuocHan\Twig\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 use RuntimeException;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand('view:clear', 'Clear all compiled view files')]
 class TwigViewClearCommand extends Command
 {
-    /** @var string */
-    protected $name = 'view:clear';
-
-    /** @var string */
-    protected $description = 'Clear all compiled view files';
-
-    /** @var \Illuminate\Filesystem\Filesystem */
-    protected $files;
-
-    public function __construct(Filesystem $files)
+    public function handle(): int
     {
-        parent::__construct();
-
-        $this->files = $files;
-    }
-
-    public function handle()
-    {
+        $files = $this->laravel['files'];
         $path = $this->laravel['config']['view.compiled'];
 
         if (! $path) {
             throw new RuntimeException('View path not found.');
         }
 
-        foreach ($this->files->glob("{$path}/*") as $view) {
-            if ($this->files->isDirectory($view)) {
-                $this->files->deleteDirectory($view);
+        foreach ($files->glob("{$path}/*") as $view) {
+            if ($files->isDirectory($view)) {
+                $files->deleteDirectory($view);
                 continue;
             }
-            if ($this->files->isFile($view)) {
-                $this->files->delete($view);
+            if ($files->isFile($view)) {
+                $files->delete($view);
             }
         }
 
-        $this->info('Compiled twig views cleared!');
+        $this->components->info('Compiled blade & twig views cleared!');
+
+        return self::SUCCESS;
     }
 }

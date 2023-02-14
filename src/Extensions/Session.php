@@ -4,32 +4,15 @@ namespace DinhQuocHan\Twig\Extensions;
 
 use Illuminate\Contracts\Session\Session as SessionContract;
 use Twig\Extension\AbstractExtension;
-use Twig\Extension\ExtensionInterface;
 use Twig\TwigFunction;
 
-class Session extends AbstractExtension implements ExtensionInterface
+class Session extends AbstractExtension
 {
-    /**
-     * @var \Illuminate\Contracts\Session\Session
-     */
-    protected $session;
-
-    /**
-     * Create a new session extension.
-     *
-     * @param \Illuminate\Contracts\Session\Session
-     */
-    public function __construct(SessionContract $session)
+    public function __construct(protected SessionContract $session)
     {
-        $this->session = $session;
     }
 
-    /**
-     * Get functions.
-     *
-     * @return \Twig\TwigFunction[]
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('session', [$this->session, 'get']),
