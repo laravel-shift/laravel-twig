@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-twig` will be documented in this file
 
+## 3.0.0 - 2023-02-14
+
+- Happy Valentine Day 💖
+- Support Laravel 10.x
+- Add type-hints
+- Remove Support Laravel 6.x, 7.x, 8.x
+- Remove un-used codes
+
 ## 2.0.0 - 2022-01-18
 
 - Support Laravel 9.x
