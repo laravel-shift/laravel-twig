@@ -8,8 +8,8 @@ Allows you to use [Twig](https://twig.symfony.com/) in [Laravel](https://laravel
 
 ## Requirements
 
-- PHP >= 7.3.0
-- Laravel >= 6.x
+- PHP >= 8.0
+- Laravel >= 9.x
 
 ## Installation
 
@@ -57,30 +57,10 @@ Laravel Twig allows you to define your own custom filters, functions, globals, t
 The following example creates a `{{ product.price|money_format }}` filter which formats a given `$product->price`:
 
 ```php
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
-use DinhQuocHan\Twig\Facades\Twig;
-
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register bindings in the container.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+    //
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         Twig::addFilter(new TwigFilter('money_format', function ($price) {
